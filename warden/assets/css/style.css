@@ -1,0 +1,264 @@
+/*================================================================================
+	Item Name: Robust - Responsive Admin Theme
+	Version: 1.0
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+body {
+	font-family: 'Montserrat', sans-serif !important;
+}
+.btn {
+	padding: 0.5rem 0.8rem !important;
+}
+.ae_login {
+	padding: 1rem 1rem !important;
+}
+.btn i {
+	margin: 0;
+}
+.footer_logo span {
+	color: #d1212b !important;
+}
+.footer_logo i {
+	color: #0e763c !important;
+}
+.custom-control {
+	width: 49%;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: rgb(255, 255, 255) !important;
+    background-image: none !important;
+    color: rgb(0, 0, 0) !important;
+}
+.modal {
+	text-align: center;
+}
+.modal-content {
+     border: none;
+}
+.myModal .modal-body {
+    position: relative;
+    padding: 40px;
+    display: inline-block;
+    text-align: left;
+}
+.myModal .modal-dialog {
+    margin: 70px 50px;
+    display: inline-block;
+}
+.myModal .close {
+    display: block;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: -35px;
+    top: -35px;
+    background: transparent url(../images/close.svg) no-repeat center center !important;
+    background-size: 20px 20px !important;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    border: none;
+}
+@media (min-width: 576px) {
+.myModal .modal-dialog {
+    max-width: 750px;
+}
+}
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 100px;
+    height: 30px;
+    padding: 3px;
+    margin: 0 10px 10px 0;
+    background: linear-gradient(to bottom, #eeeeee, #FFFFFF 25px);
+    background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF 25px);
+    border-radius: 2.52px;
+    box-shadow: inset 0 -1px white, inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    box-sizing: content-box;
+}
+label {
+    font-weight: inherit;
+}
+input[type=checkbox], input[type=radio] {
+    margin: 4px 0 0;
+
+    line-height: normal;
+      -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+
+.switch-input {
+	width: 100%;
+	height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    box-sizing: content-box;
+}
+.switch-left-right .switch-input:checked ~ .switch-label {
+    background: inherit;
+}
+.switch-input:checked ~ .switch-label {
+    background: #E1B42B;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
+}
+.switch-left-right .switch-label {
+    overflow: hidden;
+}
+.switch-label, .switch-handle {
+    transition: All 0.3s ease;
+    -webkit-transition: All 0.3s ease;
+    -moz-transition: All 0.3s ease;
+    -o-transition: All 0.3s ease;
+}
+.switch-label {
+    position: relative;
+    display: block;
+    height: inherit;
+    font-size: 10px;
+    text-transform: uppercase;
+    background: #eceeef;
+    border-radius: inherit;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.15);
+    box-sizing: content-box;
+}
+.switch-left-right .switch-input:checked ~ .switch-label:before {
+    opacity: 1;
+    left: 100px;
+}
+.switch-input:checked ~ .switch-label:before {
+    opacity: 0;
+}
+.switch-left-right .switch-label:before {
+    background: #cecece;
+    text-align: left;
+    padding-left: 55px!important;
+}
+.switch-left-right .switch-label:before, .switch-left-right .switch-label:after {
+    width: 20px;
+    height: 20px;
+    top: 4px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 11px 0 0 0;
+    text-indent: -12px;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2), inset 0 0 3px rgba(0, 0, 0, 0.1);
+}
+.switch-label:before {
+    content: attr(data-off);
+    right: 11px;
+    color: #696969;
+    font-weight: 500;
+    text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+}
+
+span.switch-label:after {
+    content: attr(data-on);
+    left: 11px;
+    color: #FFFFFF;
+    font-weight: 500;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+    position: absolute;
+  
+}
+
+.switch-label:before, .switch-label:after {
+    position: absolute;
+    top: 50%;
+    margin-top: -5px;
+    line-height: 1;
+    -webkit-transition: inherit;
+    -moz-transition: inherit;
+    -o-transition: inherit;
+    transition: inherit;
+    box-sizing: content-box;
+}
+
+.switch-left-right .switch-input:checked ~ .switch-label:after {
+    left: 0!important;
+    opacity: 1;
+    padding-left: 20px;
+}
+
+
+.switch-input:checked ~ .switch-label:after {
+    opacity: 1;
+}
+
+
+.switch-left-right .switch-label:after {
+    text-align: left;
+    text-indent: 9px;
+    background: #0e763c!important;
+    left: -100px!important;
+    opacity: 1;
+    width: 100%!important;
+ 
+}
+.switch-left-right .switch-label:before, .switch-left-right .switch-label:after {
+    width: 46px;
+    height: 20px;
+    top: 4px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 11px 0 0 0;
+    text-indent: -12px;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2), inset 0 0 3px rgba(0, 0, 0, 0.1);
+}
+.switch-input:checked ~ .switch-handle {
+    left: 74px;
+    box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+.switch-label, .switch-handle {
+    transition: All 0.3s ease;
+    -webkit-transition: All 0.3s ease;
+    -moz-transition: All 0.3s ease;
+    -o-transition: All 0.3s ease;
+}
+
+.switch-handle {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0);
+    background-image: -webkit-linear-gradient(top, #FFFFFF 40%, #f0f0f0);
+    border-radius: 2.52;
+    /*box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);*/
+}
+
+.switch-handle:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -6px 0 0 -6px;
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(to bottom, #eeeeee, #FFFFFF);
+    background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF);
+    border-radius: 6px;
+    box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
+}
