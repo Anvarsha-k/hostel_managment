@@ -50,6 +50,7 @@ if (isset($_POST['upload'])) {
 	<?php
 	include("./components/links.php");
 	?>
+
 </head>
 
 <body data-open="click" data-menu="vertical-menu" data-col="2-columns" class="vertical-layout vertical-menu 2-columns fixed-navbar">
@@ -62,6 +63,7 @@ if (isset($_POST['upload'])) {
 	<?php
 	include("./components/menu.php");
 	?>
+
 	<!-- / main menu-->
 
 	<div class="app-content content container-fluid">

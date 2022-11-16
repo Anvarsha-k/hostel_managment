@@ -1,16 +1,15 @@
 	<div data-scroll-to-active="true" class="main-menu menu-fixed menu-light menu-accordion menu-shadow">
 
 		<div class="main-menu-header">
-		<!-- <input type="text" placeholder="Search" class="menu-search form-control round"/> -->
+			<!-- <input type="text" placeholder="Search" class="menu-search form-control round"/> -->
 		</div>
 
 
 		<div class="main-menu-content">
 			<ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
-				
 
 
-				<li class=" nav-item"><a href="addstudent.php"><i class="icon-equalizer"></i><span data-i18n="nav.components.main" class="menu-title">Add student</span></a></li>
+
 
 				<li class=" nav-item"><a href="addcomplaints.php"><i class="icon-sphere"></i><span data-i18n="nav.icons.main" class="menu-title">Add Complaints</span></a>
 				</li>

@@ -12,6 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $row = mysqli_fetch_array($query);
         $_SESSION['id'] = $row['id'];
-        header('location:addstudent.php');
+        header('location:addfood.php');
     }
 }
