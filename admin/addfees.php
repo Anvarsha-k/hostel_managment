@@ -55,68 +55,10 @@ $result = mysqli_query($conn, $sql);
                                                 </ul>
                                             </div>
                                         </div>
-                                        <html>
 
-                                        <head>
-                                            <script>
-                                                var userName;
-                                                var month;
 
-                                                function getUser(str) {
-                                                    console.log("name changed");
-                                                    userName = str;
-                                                    if (userName && month) {
-                                                        if (str == "") {
-                                                            document.getElementById("txtHint").innerHTML = "";
-                                                            return;
-                                                        } else {
-                                                            if (window.XMLHttpRequest) {
-                                                                // code for IE7+, Firefox, Chrome, Opera, Safari
-                                                                xmlhttp = new XMLHttpRequest();
-                                                            } else {
-                                                                // code for IE6, IE5
-                                                                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                                                            }
-                                                            xmlhttp.onreadystatechange = function() {
-                                                                if (this.readyState == 4 && this.status == 200) {
-                                                                    document.getElementById("txtHint").innerHTML = this.responseText;
-                                                                }
-                                                            };
-                                                            xmlhttp.open("GET", "getFeesDetails.php?q=" + userName + "&r=" + month, true);
-                                                            xmlhttp.send();
-                                                        }
-                                                    }
 
-                                                }
-
-                                                function getAmountRemainingBasedOnMonth(str) {
-                                                    month = str;
-                                                    if (userName && month) {
-                                                        if (str == "") {
-                                                            document.getElementById("txtHint").innerHTML = "";
-                                                            return;
-                                                        } else {
-                                                            if (window.XMLHttpRequest) {
-                                                                // code for IE7+, Firefox, Chrome, Opera, Safari
-                                                                xmlhttp = new XMLHttpRequest();
-                                                            } else {
-                                                                // code for IE6, IE5
-                                                                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                                                            }
-                                                            xmlhttp.onreadystatechange = function() {
-                                                                if (this.readyState == 4 && this.status == 200) {
-                                                                    document.getElementById("txtHint").innerHTML = this.responseText;
-                                                                }
-                                                            };
-                                                            xmlhttp.open("GET", "getFeesDetails.php?q=" + userName + "&r=" + month, true);
-                                                            xmlhttp.send();
-                                                        }
-                                                    }
-                                                }
-                                            </script>
-                                        </head>
-                                        </head>
-                                        <form method="POST" action="addfees.php" enctype="multipart/form-data">
+                                        <form method="POST" action="" enctype="multipart/form-data">
                                             <div class="card-body collapse in">
                                                 <div class="card-block">
                                                     <form class="form">
@@ -126,7 +68,7 @@ $result = mysqli_query($conn, $sql);
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label for="projectinput6">Name</label>
-                                                                        <select class="select2-B form-control" name="name" onchange="getUser(this.value)">
+                                                                        <select id="nameList" class="select2-B form-control" name="name" onchange="getUser(this.value)">
                                                                             <?php
 
                                                                             while ($row = $result->fetch_assoc()) {
@@ -145,7 +87,7 @@ $result = mysqli_query($conn, $sql);
                                                                     <div class="form-group">
                                                                         <label for="">month</label>
 
-                                                                        <select class="select2-B form-control" name="month" onchange="getAmountRemainingBasedOnMonth(this.value)">
+                                                                        <select class="select2-B form-control" id="monthList" name="month" onchange="getAmountRemainingBasedOnMonth(this.value)">
                                                                             <option>January</option>
                                                                             <option>February</option>
                                                                             <option>March</option>
@@ -161,22 +103,87 @@ $result = mysqli_query($conn, $sql);
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label for="">Amount</label>
-                                                                        <input type="text" id="timepicker" class="form-control" placeholder="Amount" name="amount" autocomplete="off">
-                                                                    </div>
-                                                                </div>
 
-
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        <input type="submit" name="upload" class="btn btn-primary" value="submit">
-                                                                    </div>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </form>
+
+                                                    <script>
+                                                        var userName;
+                                                        var month;
+                                                        var e = document.getElementById("nameList");
+                                                        var nameText = e.options[e.selectedIndex].text;
+                                                        var g = document.getElementById("monthList");
+                                                        var monthText = e.options[e.selectedIndex].text;
+                                                        userName = nameText;
+                                                        month = monthText;
+                                                        if (window.XMLHttpRequest) {
+                                                            // code for IE7+, Firefox, Chrome, Opera, Safari
+                                                            xmlhttp = new XMLHttpRequest();
+                                                        } else {
+                                                            // code for IE6, IE5
+                                                            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                                                        }
+                                                        xmlhttp.onreadystatechange = function() {
+                                                            if (this.readyState == 4 && this.status == 200) {
+                                                                document.getElementById("txtHint").innerHTML = this.responseText;
+                                                            }
+                                                        };
+                                                        xmlhttp.open("GET", "getFeesDetails.php?q=" + userName + "&r=" + month, true);
+                                                        xmlhttp.send();
+
+                                                        function getUser(str) {
+                                                            console.log("name changed");
+                                                            userName = str;
+                                                            if (userName || month) {
+                                                                if (str == "") {
+                                                                    document.getElementById("txtHint").innerHTML = "";
+                                                                    return;
+                                                                } else {
+                                                                    if (window.XMLHttpRequest) {
+                                                                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                                                                        xmlhttp = new XMLHttpRequest();
+                                                                    } else {
+                                                                        // code for IE6, IE5
+                                                                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                                                                    }
+                                                                    xmlhttp.onreadystatechange = function() {
+                                                                        if (this.readyState == 4 && this.status == 200) {
+                                                                            document.getElementById("txtHint").innerHTML = this.responseText;
+                                                                        }
+                                                                    };
+                                                                    xmlhttp.open("GET", "getFeesDetails.php?q=" + userName + "&r=" + month, true);
+                                                                    xmlhttp.send();
+                                                                }
+                                                            }
+
+                                                        }
+
+                                                        function getAmountRemainingBasedOnMonth(str) {
+                                                            month = str;
+                                                            if (userName && month) {
+                                                                if (str == "") {
+                                                                    document.getElementById("txtHint").innerHTML = "";
+                                                                    return;
+                                                                } else {
+                                                                    if (window.XMLHttpRequest) {
+                                                                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                                                                        xmlhttp = new XMLHttpRequest();
+                                                                    } else {
+                                                                        // code for IE6, IE5
+                                                                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                                                                    }
+                                                                    xmlhttp.onreadystatechange = function() {
+                                                                        if (this.readyState == 4 && this.status == 200) {
+                                                                            document.getElementById("txtHint").innerHTML = this.responseText;
+                                                                        }
+                                                                    };
+                                                                    xmlhttp.open("GET", "getFeesDetails.php?q=" + userName + "&r=" + month, true);
+                                                                    xmlhttp.send();
+                                                                }
+                                                            }
+                                                        }
+                                                    </script>
                                                 </div>
                                             </div>
                                     </div>

@@ -41,14 +41,7 @@ include("./components/session.php")
 					<h2 class="content-header-title">Students Complaints</h2>
 				</div>
 
-				<div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-6 col-xs-12">
-					<div class="breadcrumb-wrapper col-xs-12">
-						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-							<li class="breadcrumb-item active">Dashboard</li>
-						</ol>
-					</div>
-				</div>
+
 			</div>
 			<div class="content-body">
 
