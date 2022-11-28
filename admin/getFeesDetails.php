@@ -37,7 +37,7 @@
                                                         echo "<div class='col-md-6'>
     <div class='form-group'>
         <label for=''>Amount (" . $remaining . ")</label>
-        <input type='number' max=" . $remaining . " name='amount' autocomplete='off'>
+        <input required type='number' max=" . $remaining . " name='amount' autocomplete='off'>
     </div>
 </div>
 <div class='col-md-12'>
@@ -51,7 +51,7 @@
         <div class='col-md-6'>
         <div class='form-group'>
             <label for=''>Amount (" . $remaining . ")</label>
-            <input type='number' max=" . $remaining . " name='amount' autocomplete='off'>
+            <input required type='number' max=" . $remaining . " name='amount' autocomplete='off'>
         </div>
     </div>
     <div class='col-md-12'>

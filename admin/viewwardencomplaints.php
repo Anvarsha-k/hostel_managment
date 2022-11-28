@@ -95,7 +95,7 @@ include("./components/session.php");
 																<td>' . $row['datex'] . '</td>
 																<td>' . $row['complaint'] . '</td>
 																<td>
-																<a href=delete.php?id=' . $row['id'] . "><span style='color:#fff;' class='btn btn-danger glyphicon glyphicon-trash' title='Delete post'></span></a>
+																<a href=delete3.php?id=' . $row['id'] . "><span style='color:#fff;' class='btn btn-danger glyphicon glyphicon-trash' title='Delete post'></span></a>
 																</td>
 																</tr>
 														</tbody>";

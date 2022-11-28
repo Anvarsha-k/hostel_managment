@@ -20,6 +20,9 @@
 				<li class=" nav-item"><a href="viewstudentcomplaints.php"><i class="icon-pen2"></i><span data-i18n="nav.chartjs.main" class="menu-title">View Studentcomplaints</span></a></li>
 				</li>
 
+
+				<li class=" nav-item"><a href="viewfood.php"><i class="icon-sphere"></i><span data-i18n="nav.icons.main" class="menu-title">View Food</span></a>
+				</li>
 			</ul>
 		</div>
 

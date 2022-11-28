@@ -74,19 +74,19 @@ $b = $row['addmission'];
 													<div class="col-md-6">
 														<div class="form-group">
 															<label for="">Student Name</label>
-															<input type="text" id="" class="form-control" name="name" placeholder="Name" autocomplete="off" value="<?php echo $a; ?>">
+															<input required type="text" id="" class="form-control" name="name" placeholder="Name" autocomplete="off" value="<?php echo $a; ?>">
 														</div>
 													</div>
 													<div class="col-md-6">
 														<div class="form-group">
 															<label for="">Admission Number</label>
-															<input type="mail" id="" class="form-control" placeholder="Admission Number" name="addmission" autocomplete="off" value="<?php echo $b; ?>">
+															<input required type="number" id="" class="form-control" placeholder="Admission Number" name="addmission" autocomplete="off" value="<?php echo $b; ?>">
 														</div>
 													</div>
 													<div class="col-md-6">
 														<div class="form-group sandbox-container">
 															<label for="">Date</label>
-															<input type="text" id="" class="form-control" placeholder="Date" name="datex" autocomplete="off">
+															<input type="text" id="" required class="form-control" placeholder="Date" name="datex" autocomplete="off">
 														</div>
 													</div>
 
@@ -96,7 +96,7 @@ $b = $row['addmission'];
 													<div class="col-md-12">
 														<div class="form-group">
 															<label for="">Complaint</label>
-															<textarea id="" rows="5" class="form-control summernote hidden" name="complaint" placeholder="About Project"></textarea>
+															<textarea id="" required rows="5" class="form-control summernote hidden" name="complaint" placeholder="About Project"></textarea>
 														</div>
 													</div>
 													<input type="hidden" name="status" value="Pending">

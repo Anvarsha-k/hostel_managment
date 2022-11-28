@@ -114,7 +114,7 @@ $result = mysqli_query($conn, $sql);
                                                         var e = document.getElementById("nameList");
                                                         var nameText = e.options[e.selectedIndex].text;
                                                         var g = document.getElementById("monthList");
-                                                        var monthText = e.options[e.selectedIndex].text;
+                                                        var monthText = g.options[e.selectedIndex].text;
                                                         userName = nameText;
                                                         month = monthText;
                                                         if (window.XMLHttpRequest) {

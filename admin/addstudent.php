@@ -10,9 +10,6 @@ $msg = '';
 
 // If upload button is clicked ...
 if (isset($_POST['upload'])) {
-    // Get image name
-    $image = $_FILES['image']['name'];
-    // Get text
     $a = mysqli_real_escape_string($conn, $_POST['name']);
 
     $b = mysqli_real_escape_string($conn, $_POST['addmission']);
@@ -21,20 +18,12 @@ if (isset($_POST['upload'])) {
     $e = mysqli_real_escape_string($conn, $_POST['place']);
     $f = mysqli_real_escape_string($conn, $_POST['sex']);
 
-    // image file directorydmcksachaxlcbzxljcbaXkhcgazxgab xz,cacvsx,agz
-    $target = 'images/' . basename($image);
 
-    $sql = "INSERT INTO addstudent_tb (name,addmission,mobile,place,sex,image) VALUES ('$a','$b','$d','$e','$f','$image')";
+
+    $sql = "INSERT INTO addstudent_tb (name,addmission,mobile,place,sex) VALUES ('$a','$b','$d','$e','$f')";
     // execute query
     mysqli_query($conn, $sql);
-
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-        $msg = 'Image uploaded successfully';
-    } else {
-        $msg = 'Failed to upload image';
-    }
 }
-//$result = mysqli_query($conn, "SELECT * FROM images");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,82 +97,78 @@ if (isset($_POST['upload'])) {
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="">Name</label>
-                                                                <input type="text" id="" class="form-control" placeholder="Name" name="name" autocomplete="off">
+                                                                <input type="text" required id="" class="form-control" placeholder="Name" name="name" autocomplete="off">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="">Addmission Number</label>
-                                                                <input type="mail" id="" class="form-control" placeholder="Addmission Number" name="addmission" autocomplete="off">
+                                                                <input required type="number" id="" class="form-control" placeholder="Addmission Number" name="addmission" autocomplete="off">
                                                             </div>
                                                         </div>
+
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="">Photo</label>
-                                                                <input type="file" id="" class="form-control" placeholder="Last Name" name="image">
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="">Sex</label>
-                                                                    <div class="input-group">
-                                                                        <label class="display-inline-block custom-control custom-checkbox">
-                                                                            <input type="checkbox" name="sex" value="male" class="custom-control-input">
-                                                                            <span class="custom-control-indicator"></span>
-                                                                            <span class="custom-control-description">Male</span>
-                                                                        </label>
-                                                                        <label class="display-inline-block custom-control custom-checkbox">
-                                                                            <input type="checkbox" name="sex" value="female" class="custom-control-input">
-                                                                            <span class="custom-control-indicator"></span>
-                                                                            <span class="custom-control-description">Female</span>
-                                                                        </label>
-                                                                    </div>
+                                                                <label for="">Sex</label>
+                                                                <div class="input-group">
+                                                                    <label class="display-inline-block custom-control custom-checkbox">
+                                                                        <input required type="checkbox" name="sex" value="male" class="custom-control-input">
+                                                                        <span class="custom-control-indicator"></span>
+                                                                        <span class="custom-control-description">Male</span>
+                                                                    </label>
+                                                                    <label class="display-inline-block custom-control custom-checkbox">
+                                                                        <input type="checkbox" name="sex" value="female" class="custom-control-input">
+                                                                        <span class="custom-control-indicator"></span>
+                                                                        <span class="custom-control-description">Female</span>
+                                                                    </label>
                                                                 </div>
                                                             </div>
                                                         </div>
-
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="">Phone Number</label>
-                                                            <input type="text" id="timepicker" class="form-control" placeholder="Phone Number" name="mobile" autocomplete="off">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput6">Place</label>
-                                                            <select class="form-control" name="place">
-                                                                <option value="AK">Alaska</option>
-                                                                <option value="HI">Hawaii</option>
-                                                                <option value="CA">California</option>
-                                                                <option value="NV">Nevada</option>
-                                                                <option value="OR">Oregon</option>
-                                                                <option value="WA">Washington</option>
-                                                            </select>
-                                                        </div>
                                                     </div>
 
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="">Phone Number</label>
+                                                        <input type="number" required id="timepicker" class="form-control" placeholder="Phone Number" name="mobile" autocomplete="off">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput6">Place</label>
+                                                        <select required class="form-control" name="place">
+                                                            <option value="KERALA">Kerala</option>
+                                                            <option value="CHENNAI">Chennai</option>
+                                                            <option value="TAMIL NADU">Tamil Nadu</option>
+                                                            <option value="KARNATAKA">karnataka</option>
+                                                            <option value="DELHI">Delhi</option>
+                                                            <option value="KOLKATA">Kolkata</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
 
 
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <input type="submit" name="upload" class="btn btn-primary">
-                                                            </button>
-                                                        </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <input type="submit" name="upload" class="btn btn-primary">
+                                                        </button>
                                                     </div>
                                                 </div>
                                         </div>
-                                        </form>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                 </div>
-
-
-
-                </section>
-
             </div>
+
+
+
+            </section>
+
+        </div>
 
         </div>
         </div>
@@ -194,113 +179,6 @@ if (isset($_POST['upload'])) {
 
 
 
-        <div class="modal myModal" id="myModal">
-            <div class="modal-dialog">
-                <button type="button" class="close" data-dismiss="modal"></button>
-                <div class="modal-content">
-
-                    <div class="modal-body" id="">
-                        <form class="form">
-                            <div class="form-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="">Name</label>
-                                            <input type="text" id="" class="form-control" placeholder="First Name" name="fname" autocomplete="off">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="">Mail</label>
-                                            <input type="mail" id="" class="form-control" placeholder="Last Name" name="lname"" autocomplete=" off">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="">File</label>
-                                            <input type="file" id="" class="form-control" placeholder="Last Name" name="lname">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group sandbox-container">
-                                            <label for="">Datepicker</label>
-                                            <input type="text" id="" class="form-control" placeholder="Last Name" name="lname" autocomplete="off">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="">Timepicker</label>
-                                            <input type="text" id="" class="form-control timepicker" placeholder="Last Name" name="lname" autocomplete="off">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="projectinput6">Select</label>
-                                            <select class="select2-B form-control" multiple="multiple">
-                                                <option value="AK">Alaska</option>
-                                                <option value="HI">Hawaii</option>
-                                                <option value="CA">California</option>
-                                                <option value="NV">Nevada</option>
-                                                <option value="OR">Oregon</option>
-                                                <option value="WA">Washington</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="">Checkbox</label>
-                                            <div class="input-group">
-                                                <label class="display-inline-block custom-control custom-checkbox">
-                                                    <input type="checkbox" name="customer1" class="custom-control-input">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-description">Home Visible</span>
-                                                </label>
-                                                <label class="display-inline-block custom-control custom-checkbox">
-                                                    <input type="checkbox" name="customer1" class="custom-control-input">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-description">Home Visible</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="projectinput2">Radio</label>
-                                            <div class="input-group">
-                                                <label class="display-inline-block custom-control custom-radio">
-                                                    <input type="radio" name="customer1" class="custom-control-input">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-description">Home Visible</span>
-                                                </label>
-                                                <label class="display-inline-block custom-control custom-radio">
-                                                    <input type="radio" name="customer1" class="custom-control-input">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-description">Home Visible</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="">Textarea</label>
-                                            <textarea id="" rows="5" class="form-control summernote hidden" name="comment" placeholder="About Project"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary">
-                                                <i class="icon-check2"></i> Submit</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
         <?php
         include("./components/script.php");
         ?>
