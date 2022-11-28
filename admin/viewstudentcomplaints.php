@@ -41,14 +41,7 @@ include("./components/session.php")
 					<h2 class="content-header-title">Students Complaints</h2>
 				</div>
 
-				<div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-6 col-xs-12">
-					<div class="breadcrumb-wrapper col-xs-12">
-						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-							<li class="breadcrumb-item active">Dashboard</li>
-						</ol>
-					</div>
-				</div>
+
 			</div>
 			<div class="content-body">
 
@@ -91,7 +84,6 @@ include("./components/session.php")
 																<th class='sorting' tabindex='0' aria-controls='datatables-example' rowspan='1' colspan='1' aria-label='Position: activate to sort column ascending' style='width: 263px;'>Admission Number</th>
 																<th class='sorting' tabindex='0' aria-controls='datatables-example' rowspan='1' colspan='1' aria-label='Start date: activate to sort column ascending' style='width: 119px;'>Date</th>
 																<th class='sorting' tabindex='0' aria-controls='datatables-example' rowspan='1' colspan='1' aria-label='Start date: activate to sort column ascending' style='width: 119px;'>Complaint</th>
-																<th class='sorting' tabindex='0' 3aria-controls='datatables-example' rowspan='1' colspan='1' aria-label='Start date: activate to sort column ascending' style='width: 119px;'>Delete & Reply</th>
 																
 																
 															</tr>
@@ -105,14 +97,7 @@ include("./components/session.php")
 																<td class='sorting_1'>" . $row['name'] . '</td>
 																<td>' . $row['addmission'] . '</td>
 																<td>' . $row['datex'] . '</td>
-																<td>' . $row['complaint'] . '</td>
-																<td>
-																<a href=delete2.php?id=' . $row['id'] . "><span style='color:#fff;' class='btn btn-danger glyphicon glyphicon-trash' title='Delete post'></span></a>
-																<a class ='btn btn-info' href=reply.php?id=" . $row['id'] . "><span style='color:#fff;' class='glyphicon glyphicon-pencil' title='Delete post'></span></a>
-																
-																</td>
-															
-																
+																<td>' . $row['complaint'] . "</td>
 														
 																</tr>
 														</tbody>";

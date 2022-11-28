@@ -10,9 +10,6 @@ $msg = '';
 
 // If upload button is clicked ...
 if (isset($_POST['upload'])) {
-	// Get image name
-	$image = $_FILES['image']['name'];
-	// Get text
 	$a = mysqli_real_escape_string($conn, $_POST['name']);
 
 	$b = mysqli_real_escape_string($conn, $_POST['username']);
@@ -22,12 +19,8 @@ if (isset($_POST['upload'])) {
 	$e = mysqli_real_escape_string($conn, $_POST['place']);
 	$f = mysqli_real_escape_string($conn, $_POST['sex']);
 
-	// image file directory
-	$target = 'images/' . basename($image);
 
-	$sql = "INSERT INTO addwarden_tb (name,username,password,mobile,place,sex,image) VALUES ('$a','$b','$c','$d','$e','$f','$image')";
-	// execute query
-
+	$sql = "INSERT INTO addwarden_tb (name,username,password,mobile,place,sex) VALUES ('$a','$b','$c','$d','$e','$f')";
 	if (mysqli_query($conn, $sql)) {
 		$_GET['status'] = "New Warden Added";
 		$_GET['error'] = false;
@@ -35,13 +28,7 @@ if (isset($_POST['upload'])) {
 		$_GET['error'] = true;
 		$_GET['status'] = "Cannnot add warden right now";
 	}
-	if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-		$msg = 'Image uploaded successfully';
-	} else {
-		$msg = 'Failed to upload image';
-	}
 }
-//$result = mysqli_query($conn, "SELECT * FROM images");
 ?>
 <!DOCTYPE html>
 <html lang="en" data-textdirection="ltr" class="loading">
@@ -50,6 +37,7 @@ if (isset($_POST['upload'])) {
 	<?php
 	include("./components/links.php");
 	?>
+
 </head>
 
 <body data-open="click" data-menu="vertical-menu" data-col="2-columns" class="vertical-layout vertical-menu 2-columns fixed-navbar">
@@ -62,6 +50,7 @@ if (isset($_POST['upload'])) {
 	<?php
 	include("./components/menu.php");
 	?>
+
 	<!-- / main menu-->
 
 	<div class="app-content content container-fluid">
@@ -108,43 +97,38 @@ if (isset($_POST['upload'])) {
 															<div class="col-md-6">
 																<div class="form-group">
 																	<label for="">Name</label>
-																	<input type="text" id="" class="form-control" placeholder="First Name" name="name" autocomplete="off">
+																	<input type="text" id="" required class="form-control" placeholder="First Name" name="name" autocomplete="off">
 																</div>
 															</div>
 															<div class="col-md-6">
 																<div class="form-group">
 																	<label for="">Username</label>
-																	<input type="mail" id="" class="form-control" placeholder="Username" name="username" autocomplete="off">
+																	<input type="mail" id="" required class="form-control" placeholder="Username" name="username" autocomplete="off">
 																</div>
 															</div>
-															<div class="col-md-6">
-																<div class="form-group">
-																	<label for="">File</label>
-																	<input type="file" id="" class="form-control" placeholder="Photo" name="image">
-																</div>
-															</div>
+
 															<div class="col-md-6">
 																<div class="form-group">
 																	<label for="">Password</label>
-																	<input type="password" id="" class="form-control" placeholder="Password" name="password" autocomplete="off">
+																	<input type="password" id="" required class="form-control" placeholder="Password" name="password" autocomplete="off">
 																</div>
 															</div>
 															<div class="col-md-6">
 																<div class="form-group">
 																	<label for="">Phone Number</label>
-																	<input type="text" id="timepicker" class="form-control" placeholder="Phone Number" name="mobile" autocomplete="off">
+																	<input type="text" id="timepicker" class="form-control" placeholder="Phone Number" name="mobile" autocomplete="off" required>
 																</div>
 															</div>
 															<div class="col-md-6">
 																<div class="form-group">
 																	<label for="projectinput6">Place</label>
-																	<select class="select2-B form-control" multiple="multiple" name="place">
-																		<option value="AK">Alaska</option>
-																		<option value="HI">Hawaii</option>
-																		<option value="CA">California</option>
-																		<option value="NV">Nevada</option>
-																		<option value="OR">Oregon</option>
-																		<option value="WA">Washington</option>
+																	<select required class="select2-B form-control" name="place">
+																		<option value="KERALA">Kerala</option>
+																		<option value="TAMIL NADU">Tamil Nadu</option>
+																		<option value="CHENNAI">Chennai</option>
+																		<option value="KARNATAKA">karnataka</option>
+																		<option value="DELHI">Delhi</option>
+																		<option value="KOLKATA">Kolkata</option>
 																	</select>
 																</div>
 															</div>
@@ -154,7 +138,7 @@ if (isset($_POST['upload'])) {
 																	<label for="projectinput2">Sex</label>
 																	<div class="input-group">
 																		<label class="display-inline-block custom-control custom-radio">
-																			<input type="radio" name="sex" value="male" class="custom-control-input">
+																			<input required type="radio" name="sex" value="male" class="custom-control-input">
 																			<span class="custom-control-indicator"></span>
 																			<span class="custom-control-description">Male</span>
 																		</label>
@@ -185,38 +169,18 @@ if (isset($_POST['upload'])) {
 
 						<div class="row">
 							<div class="col-xs-12">
-								<div class="card">
-									<div class="card-header">
-										<h4 class="card-title">Categories</h4>
-										<a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-										<div class="heading-elements">
-											<ul class="list-inline mb-0">
-												<li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
-												<li><a data-action="reload"><i class="icon-reload"></i></a></li>
-												<li><a data-action="expand"><i class="icon-expand2"></i></a></li>
-												<li><a data-action="close"><i class="icon-cross2"></i></a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="card-body collapse in">
-										<div class="card-block card-dashboard">
-											<div class="alert alert-info alert-dismissible no-border fade in mb-2" role="alert">
-												<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-													<span aria-hidden="true"></span>
-												</button>
-												For help with such table please check <a href="#" class="alert-link">http://datatables.net/</a>
-											</div>
 
-											<div class="responsive-table">
-												<div id="datatables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-													<div class="row">
-														<div class="col-sm-12" style="overflow-x: auto;">
-															<?php
-															include 'db_connect.php';
-															$sql = 'SELECT * FROM addwarden_tb';
-															$result = $conn->query($sql);
-															if ($result->num_rows > 0) {
-																echo "
+
+								<div class="responsive-table">
+									<div id="datatables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+										<div class="row">
+											<div class="col-sm-12" style="overflow-x: auto;">
+												<?php
+												include 'db_connect.php';
+												$sql = 'SELECT * FROM addwarden_tb';
+												$result = $conn->query($sql);
+												if ($result->num_rows > 0) {
+													echo "
 													<table id='datatables-example' class='table table-striped table-bordered dataTable no-footer' width='100%'' cellspacing='0' role='grid' aria-describedby='datatables-example_info' style='width: 100%;''>
 														<thead>
 															<tr role='row'>
@@ -226,11 +190,10 @@ if (isset($_POST['upload'])) {
 																<th class='sorting' tabindex='0' aria-controls='datatables-example' rowspan='1' colspan='1' aria-label='Start date: activate to sort column ascending' style='width: 119px;'>Number</th>
 																<th class='sorting' tabindex='0' aria-controls='datatables-example' rowspan='1' colspan='1' aria-label='Start date: activate to sort column ascending' style='width: 119px;'>Place</th>
 																<th class='sorting' tabindex='0' aria-controls='datatables-example' rowspan='1' colspan='1' aria-label='Start date: activate to sort column ascending' style='width: 119px;'>Sex</th>
-																<th class='sorting' tabindex='0' aria-controls='datatables-example' rowspan='1' colspan='1' aria-label='Age: activate to sort column ascending' style='width: 62px;'>Photo</th>
 															</tr>
 														</thead>";
-																while ($row = $result->fetch_assoc()) {
-																	echo "
+													while ($row = $result->fetch_assoc()) {
+														echo "
 														<tbody>
 
 
@@ -241,46 +204,45 @@ if (isset($_POST['upload'])) {
 																<td>' . $row['mobile'] . '</td>
 																<td>' . $row['place'] . '</td>
 																<td>' . $row['sex'] . '</td>
-																<td><img src=' . 'images/' . $row['image'] . " width='100' height='100'></td>
 																<td>
-																<a href=delete.php?id=" . $row['id'] . "><span style='color:#fff;' class='btn btn-danger glyphicon glyphicon-trash' title='Delete post'></span></a>
+																<a href=delete.php?id=' . $row['id'] . "><span style='color:#fff;' class='btn btn-danger glyphicon glyphicon-trash' title='Delete post'></span></a>
 																</td>
 																</tr>
 														</tbody>";
-																}
-																echo '</table>';
-															} else {
-																echo '0 result';
-															}
-															$conn->close();
-															?>
-														</div>
-													</div>
-												</div>
+													}
+													echo '</table>';
+												} else {
+													echo '0 result';
+												}
+												$conn->close();
+												?>
 											</div>
-
 										</div>
-
 									</div>
 								</div>
+
 							</div>
+
 						</div>
-
-
-					</section>
-
 				</div>
-
 			</div>
 		</div>
 
-		<!-- ////////////////////////////////////////////////////////////////////////////-->
 
-		<!-- scripts-->
-		<?php
-		include("./components/script.php")
-		?>
-		<!-- ////scripts-->
+		</section>
+
+	</div>
+
+	</div>
+	</div>
+
+	<!-- ////////////////////////////////////////////////////////////////////////////-->
+
+	<!-- scripts-->
+	<?php
+	include("./components/script.php")
+	?>
+	<!-- ////scripts-->
 </body>
 
 </html>

@@ -13,6 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['id'] = $row['id'];
         $_SESSION['addmission'] = $row['addmission'];
 
-        header('location:home.php');
+        header('location:viewprofiles.php');
     }
 }
